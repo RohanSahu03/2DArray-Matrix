@@ -28,6 +28,7 @@ public class Matrix {
 		}
 	}
 	
+	
 	void oddEvenMatrix(int[][] mat) {
 	
 		for(int i=0;i<mat.length;i++) {
@@ -73,6 +74,29 @@ public class Matrix {
 			}
 		}
 		return tar;
+	}
+	
+	int[][] addMatrix(int[][] x, int[][] y){
+		if(x.length!=y.length || x[0].length!=y[0].length)
+			return null;
+		int[][] z= new int[x.length][x[0].length];
+		
+		for(int i=0;i<y.length;i++) {
+			for(int j=0;j<y[i].length;j++) {
+				z[i][j]=x[i][j]+y[i][j];
+			}
+		}
+		return z;
+	}
+	
+	int[] rowWiseSum(int[][] mat ) {
+		int[] sum= new int[mat.length];
+		for(int i=0;i<mat.length;i++) {
+			for(int j=0;j<mat[i].length;j++) {
+			sum[i]=sum[i]+mat[i][j];
+			}
+		}
+		return sum;
 	}
 	
 	void rowWiseReverse(int [][]mat) {
