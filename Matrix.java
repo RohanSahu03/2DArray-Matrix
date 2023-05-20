@@ -30,18 +30,21 @@ public class Matrix {
 	
 	
 	void oddEvenMatrix(int[][] mat) {
-	
+	int even=0;
+	int odd=0;
 		for(int i=0;i<mat.length;i++) {
 			for(int j=0;j<mat[i].length;j++) {
 				if(mat[i][j]%2==0) {
-					System.out.println("even elements "+mat[i][j]);
+					even++;
 				}
 				else {
-					System.out.println("odd elements "+mat[i][j]);
+					odd++;
 				}
 			}
 
 		}
+		System.out.println("even numbers "+even);
+		System.out.println("odd numbers "+odd);
 	}
 	
 	void sumOfMatrixElement(int[][] mat) {
@@ -115,6 +118,44 @@ public class Matrix {
 	}
 	}
 	
+	int[][] columnWiseReverse(int[][] mat) {
+		for(int i=0;i<mat[0].length;i++) {
+			int j=0;
+			int k=mat.length-1;
+			
+			while(j<k) {
+				int temp=mat[j][i];
+				mat[j][i]=mat[k][i];
+				mat[k][i]=temp;
+				j++;
+				k--;
+			}
+		}
+		return mat;
+	}
 	
+	int[][] rotateLeft(int[][] mat){
+		int[][] trans=transpose(mat);
+		int[][] res= columnWiseReverse(trans);
+		return res;
+	}
+	
+	int[][] reverseDiagonalElement(int[][] mat){
+		int i=0;
+		int j=mat.length-1;
+		while(i<j) {
+			int temp=mat[i][i];
+			mat[i][i]=mat[j][j];
+			mat[j][j]=temp;
+			
+			temp=mat[i][j];
+			mat[i][j]=mat[j][i];
+			mat[j][i]=temp;
+			
+			i++;
+			j--;
+		}
+		return mat;
+	}
 
 }
